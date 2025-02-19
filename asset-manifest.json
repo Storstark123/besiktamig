@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Storstark123/besiktamig/static/css/main.b79bc1ab.css",
+    "main.js": "/Storstark123/besiktamig/static/js/main.b032aed4.js",
+    "static/js/453.9b654031.chunk.js": "/Storstark123/besiktamig/static/js/453.9b654031.chunk.js",
+    "index.html": "/Storstark123/besiktamig/index.html",
+    "main.b79bc1ab.css.map": "/Storstark123/besiktamig/static/css/main.b79bc1ab.css.map",
+    "main.b032aed4.js.map": "/Storstark123/besiktamig/static/js/main.b032aed4.js.map",
+    "453.9b654031.chunk.js.map": "/Storstark123/besiktamig/static/js/453.9b654031.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b79bc1ab.css",
+    "static/js/main.b032aed4.js"
+  ]
+}
