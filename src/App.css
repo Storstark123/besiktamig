@@ -1,14 +1,45 @@
-.App {
+/* Ensure the landing page fills the viewport */
+.landing-page {
+  background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
+  min-height: 100vh;  /* Full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  color: #fff;
+  padding: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Style the header container */
+.landing-header {
+  max-width: 600px;
+}
+
+/* Header text styling */
+.landing-header h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+/* Description text styling */
+.landing-header p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+/* Get Started button styling */
+.get-started-button {
+  background-color: #4CAF50;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1rem;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the button */
+.get-started-button:hover {
+  background-color: #45a049;
 }

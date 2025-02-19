@@ -1,16 +1,18 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React from 'react';
+import './App.css';
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/" exact>
-          <h1>Welcome to the Home Page</h1>
-        </Route>
-        <Route path="/about">
-          <h1>About Page</h1>
-        </Route>
-      </Switch>
-    </Router>
+    <div className="landing-page">
+      <header className="landing-header">
+        <h1>Glöm inte att besikta bilen</h1>
+        <p>
+           Stå inte där som ett fån, få en påminnelse.
+        </p>
+        <button className="get-started-button">Börja här</button>
+      </header>
+    </div>
   );
 }
+
+export default App;
