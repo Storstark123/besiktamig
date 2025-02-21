@@ -7,7 +7,7 @@ function App() {
       <header className="landing-header">
         <h1>Glöm inte att besikta bilen</h1>
         <p>
-           Stå inte där som ett fån derp, få en påminnelse.
+           Stå inte där som ett fån derpextrakeab, få en påminnelse.
         </p>
         <button className="get-started-button">Börja här</button>
       </header>
