@@ -8,7 +8,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
-    <Router> {/* Router wraps the entire app */}
+    <Router basename="/besiktamig">
       <div className="app">
         <header className="header">
           <h2>BesiktaMig</h2>
