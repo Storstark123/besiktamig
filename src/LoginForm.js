@@ -13,7 +13,7 @@ function LoginForm({ onLogin }) {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     // Simple mock validation for testing
-    if (email === "user@example.com" && password === "password123") {
+    if (email === "test" && password === "test") {
       onLogin();
       setErrorMessage(""); // Clear any previous error
     } else {
