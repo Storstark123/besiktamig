@@ -11,7 +11,7 @@ function App() {
     <Router> {/* Router wraps the entire app */}
       <div className="app">
         <header className="header">
-          <h2><Link to="/">BesiktaMig</Link></h2> {/* Makes the title clickable */}
+          <h2>BesiktaMig</h2>
           <LoginLogoutButton isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         </header>
 
