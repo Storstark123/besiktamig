@@ -43,7 +43,7 @@ function App() {
       {!isLoggedIn && !showLoginForm && (
         <div className="container">
           <h1>Glöm inte att besikta bilen</h1>
-          <p>Stå inte där som ett fån, få en påminnelse.</p>
+          <p>Stå inte där som ett fån derp, få en påminnelse.</p>
           <div className="center-button-container">
             <button className="button">Börja här</button>
           </div>
