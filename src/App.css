@@ -1,45 +1,143 @@
-/* Ensure the landing page fills the viewport */
-.landing-page {
-  background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
-  min-height: 100vh;  /* Full viewport height */
+/* Header styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(45deg, #315bbe, #182848);  /* Modern gradient background */
+  padding: 10px 20px;  /* Smaller padding */
+  color: white;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);  /* Subtle border to separate header from content */
+}
+
+/* Header text */
+.header h2 {
+  font-size: 24px;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
+  font-weight: 600; /* Slightly bolder font for a modern touch */
+}
+
+/* Header login button with dynamic width */
+.login-button {
+  padding: 8px 16px; 
+  font-size: 14px;
+  background: linear-gradient(145deg, #6a11cb, #2575fc);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.4s ease, box-shadow 0.3s ease;
+  width: auto;   /* Allow it to adapt to content */
+  min-width: 100px;   /* Maintain minimum size */
+  max-width: 200px;   /* Limit max width for larger screens */
+  text-align: center;
+}
+
+/* Hover effect for the login button */
+.login-button:hover {
+  background: linear-gradient(145deg, #2575fc, #6a11cb);
+  transform: translateY(-3px);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Focus effect for accessibility */
+.login-button:focus {
+  outline: none;
+  box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .login-button {
+    padding: 8px 16px;
+    font-size: 12px;
+    width: auto;
+  }
+}
+
+/* Body styling with a gradient background */
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(45deg, #0e1358, #713dff);  /* Gradient background */
+  color: white;
+  display: flex;
+  justify-content: center;  /* Center horizontally */
+  align-items: center;  /* Center vertically */
+  height: 100vh;  /* Full screen height */
+  margin: 0;
+  padding: 0;
+  padding-top: 10px; /* Space for fixed header */
+  overflow: hidden;  /* Prevent scrolling */
+}
+
+/* Container for the form with background and padding */
+.container {
+  background: rgba(255, 255, 255, 0.1);  /* Light translucent background */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);  /* Soft shadow */
+  width: 100%;
+  max-width: 500px;  /* Limit width for form */
+  text-align: center;
+  backdrop-filter: blur(5px);  /* Slight blur effect */
+  margin-top: 20px; /* Move content up slightly */
+  transition: margin-top 0.3s ease;
+}
+
+/* Additional adjustments for content placement */
+.container h1 {
+  margin-top: 0; /* Remove any margin from top */
+}
+
+/* Button container centering */
+.center-button-container {
+  margin-top: 20px; /* Space from the text above */
   display: flex;
   justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #fff;
-  padding: 20px;
 }
 
-/* Style the header container */
-.landing-header {
-  max-width: 600px;
-}
-
-/* Header text styling */
-.landing-header h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
-/* Description text styling */
-.landing-header p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-}
-
-/* Get Started button styling */
-.get-started-button {
-  background-color: #4CAF50;
+/* Modern "Börja här" button styling */
+.button {
+  padding: 14px 30px;  /* Comfortable padding */
+  font-size: 18px;  /* Larger font size for better readability */
+  background: linear-gradient(145deg, #6a11cb, #2575fc);  /* Gradient background */
+  color: white;
   border: none;
-  padding: 15px 30px;
-  font-size: 1rem;
-  border-radius: 5px;
-  color: #fff;
+  border-radius: 25px;  /* Soft rounded corners for a modern look */
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: transform 0.3s ease, background 0.4s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  min-width: 200px;  /* Minimum width to ensure it's not too small */
+  text-align: center;
 }
 
 /* Hover effect for the button */
-.get-started-button:hover {
-  background-color: #45a049;
+.button:hover {
+  background: linear-gradient(145deg, #2575fc, #6a11cb);  /* Inverted gradient on hover */
+  transform: translateY(-3px);  /* Button lifts slightly */
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);  /* Deeper shadow on hover */
 }
+
+/* Focus effect for accessibility */
+.button:focus {
+  outline: none;
+  box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .container {
+    max-width: 90%;  /* Allow the container to take up more width on mobile */
+  }
+}
+
