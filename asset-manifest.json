@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/besiktamig/static/css/main.33486d10.css",
-    "main.js": "/besiktamig/static/js/main.c8b5d6c5.js",
+    "main.js": "/besiktamig/static/js/main.1897b358.js",
     "static/js/453.9b654031.chunk.js": "/besiktamig/static/js/453.9b654031.chunk.js",
     "index.html": "/besiktamig/index.html",
     "main.33486d10.css.map": "/besiktamig/static/css/main.33486d10.css.map",
-    "main.c8b5d6c5.js.map": "/besiktamig/static/js/main.c8b5d6c5.js.map",
+    "main.1897b358.js.map": "/besiktamig/static/js/main.1897b358.js.map",
     "453.9b654031.chunk.js.map": "/besiktamig/static/js/453.9b654031.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.33486d10.css",
-    "static/js/main.c8b5d6c5.js"
+    "static/js/main.1897b358.js"
   ]
 }
