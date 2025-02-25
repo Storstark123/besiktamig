@@ -1,28 +1,23 @@
 import React, { useState } from "react";
-import "./LoginForm.css"; // Import the CSS for styling
+import { useNavigate } from "react-router-dom";
+import "./LoginForm.css";
 
 function LoginForm({ onLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
 
-  const handleEmailChange = (e) => setEmail(e.target.value);
-  const handlePasswordChange = (e) => setPassword(e.target.value);
+  const navigate = useNavigate();
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    // Simple mock validation for testing
-    if (email === "test" && password === "test") {
-      onLogin();
-      setErrorMessage(""); // Clear any previous error
+    if (email === "test@test.com" && password === "test") {
+      onLogin();  // Call onLogin to update the state
+      setErrorMessage("");
+      navigate("/dashboard");  // Redirect to dashboard
     } else {
       setErrorMessage("Invalid email or password");
     }
-  };
-
-  const togglePasswordVisibility = () => {
-    setShowPassword((prevState) => !prevState);
   };
 
   return (
@@ -33,25 +28,16 @@ function LoginForm({ onLogin }) {
           type="email"
           placeholder="Email"
           value={email}
-          onChange={handleEmailChange}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <div className="password-input-container">
-          <input
-            type={showPassword ? "text" : "password"}
-            placeholder="Password"
-            value={password}
-            onChange={handlePasswordChange}
-            required
-          />
-          <button
-            type="button"
-            className="password-toggle-btn"
-            onClick={togglePasswordVisibility}
-          >
-            {showPassword ? "Hide" : "Show"}
-          </button>
-        </div>
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
         <button type="submit">Login</button>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
       </form>

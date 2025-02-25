@@ -1,58 +1,69 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from "react-router-dom";
 import LoginForm from "./LoginForm";
-import Dashboard from "./Dashboard"; // Import the Dashboard component
+import Dashboard from "./Dashboard";
 import "./App.css";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showLoginForm, setShowLoginForm] = useState(false);
-
-  // Handle login status change
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-    setShowLoginForm(false);
-  };
-
-  // Handle logout
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    setShowLoginForm(false); // Hide login form when logged out
-  };
-
-  // Toggle login form visibility
-  const toggleLoginForm = () => setShowLoginForm(!showLoginForm);
 
   return (
-    <div className="app">
-      <header className="header">
-        <h2>BesiktaMig</h2>
-        <button
-          className="login-button"
-          onClick={isLoggedIn ? handleLogout : toggleLoginForm}
-        >
-          {isLoggedIn ? "Logout" : "Login"}
-        </button>
-      </header>
+    <Router> {/* Router wraps the entire app */}
+      <div className="app">
+        <header className="header">
+          <h2>BesiktaMig</h2>
+          <LoginLogoutButton isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+        </header>
 
-      {/* Show Login Form if logged out and toggle is true */}
-      {!isLoggedIn && showLoginForm && (
-        <LoginForm onLogin={handleLogin} />
-      )}
+        <Routes>
+          {/* Landing Page - When logged out */}
+          <Route path="/" element={
+            !isLoggedIn ? (
+              <div className="container">
+                <h1>Glöm inte att besikta bilen</h1>
+                <p>Stå inte där som ett fån, få en påminnelse.</p>
+                <div className="center-button-container">
+                  <Link to="/login">
+                    <button className="button">Börja här</button>
+                  </Link>
+                </div>
+              </div>
+            ) : (
+              <Dashboard onLogout={() => setIsLoggedIn(false)} />
+            )
+          } />
 
-      {/* Show content when logged out and login form is hidden */}
-      {!isLoggedIn && !showLoginForm && (
-        <div className="container">
-          <h1>Glöm inte att besikta bilen</h1>
-          <p>Stå inte där som ett fån he, få en påminnelse.</p>
-          <div className="center-button-container">
-            <button className="button">Börja här</button>
-          </div>
-        </div>
-      )}
+          {/* Login Page */}
+          <Route path="/login" element={<LoginForm onLogin={() => setIsLoggedIn(true)} />} />
 
-      {/* Show Dashboard when logged in */}
-      {isLoggedIn && <Dashboard onLogout={handleLogout} />}
-    </div>
+          {/* Dashboard Page */}
+          <Route path="/dashboard" element={isLoggedIn ? <Dashboard onLogout={() => setIsLoggedIn(false)} /> : <Link to="/">Please log in first</Link>} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+// Separate LoginLogoutButton component to handle login/logout logic
+function LoginLogoutButton({ isLoggedIn, setIsLoggedIn }) {
+  const navigate = useNavigate(); // useNavigate hook inside the Router context
+
+  const handleLoginLogout = () => {
+    if (isLoggedIn) {
+      setIsLoggedIn(false);
+      navigate("/"); // Navigate back to home after logging out
+    } else {
+      navigate("/login"); // Navigate to login page if not logged in
+    }
+  };
+
+  return (
+    <button
+      className="login-button"
+      onClick={handleLoginLogout}
+    >
+      {isLoggedIn ? "Logout" : "Login"}
+    </button>
   );
 }
 
