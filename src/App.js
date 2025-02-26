@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import Dashboard from "./Dashboard";
@@ -7,12 +7,26 @@ import "./App.css";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  // Load login state from localStorage
+  useEffect(() => {
+    const storedLoginState = localStorage.getItem("isLoggedIn");
+    if (storedLoginState === "true") {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  // Persist login state to localStorage
+  const handleLoginLogout = (status) => {
+    setIsLoggedIn(status);
+    localStorage.setItem("isLoggedIn", status);  // Persist to localStorage
+  };
+
   return (
     <Router basename="/">
       <div className="app">
         <header className="header">
           <h2>BesiktaMig</h2>
-          <LoginLogoutButton isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+          <LoginLogoutButton isLoggedIn={isLoggedIn} handleLoginLogout={handleLoginLogout} />
         </header>
 
         <Routes>
@@ -29,15 +43,15 @@ function App() {
                 </div>
               </div>
             ) : (
-              <Dashboard onLogout={() => setIsLoggedIn(false)} />
+              <Dashboard onLogout={() => handleLoginLogout(false)} />
             )
           } />
 
           {/* Login Page */}
-          <Route path="/login" element={<LoginForm onLogin={() => setIsLoggedIn(true)} />} />
+          <Route path="/login" element={<LoginForm onLogin={() => handleLoginLogout(true)} />} />
 
           {/* Dashboard Page */}
-          <Route path="/dashboard" element={isLoggedIn ? <Dashboard onLogout={() => setIsLoggedIn(false)} /> : <Link to="/">Please log in first</Link>} />
+          <Route path="/dashboard" element={isLoggedIn ? <Dashboard onLogout={() => handleLoginLogout(false)} /> : <Link to="/">Please log in first</Link>} />
         </Routes>
       </div>
     </Router>
@@ -45,12 +59,12 @@ function App() {
 }
 
 // Separate LoginLogoutButton component to handle login/logout logic
-function LoginLogoutButton({ isLoggedIn, setIsLoggedIn }) {
-  const navigate = useNavigate(); // useNavigate hook inside the Router context
+function LoginLogoutButton({ isLoggedIn, handleLoginLogout }) {
+  const navigate = useNavigate();
 
-  const handleLoginLogout = () => {
+  const handleLoginLogoutClick = () => {
     if (isLoggedIn) {
-      setIsLoggedIn(false);
+      handleLoginLogout(false);
       navigate("/"); // Navigate back to home after logging out
     } else {
       navigate("/login"); // Navigate to login page if not logged in
@@ -60,7 +74,7 @@ function LoginLogoutButton({ isLoggedIn, setIsLoggedIn }) {
   return (
     <button
       className="login-button"
-      onClick={handleLoginLogout}
+      onClick={handleLoginLogoutClick}
     >
       {isLoggedIn ? "Logout" : "Login"}
     </button>
